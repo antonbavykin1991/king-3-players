@@ -1,0 +1,39 @@
+<thead class="" ...attributes>
+  <tr>
+    {{#if @selectable}}
+      <Ui::EmberTable::Table::THead::Th
+        @column="select"
+        @index={{-1}}
+        @data={{@data}}
+      >
+        <input
+          type="checkbox"
+          name=""
+          checked={{@isAllSelected}}
+          {{on "change" (pick 'target.checked' (fn @onSelectAll @data))}}
+        >
+      </Ui::EmberTable::Table::THead::Th>
+    {{/if}}
+    {{#each @columns as |column index|}}
+      {{#if (has-block)}}
+        {{yield (hash
+            Th=(component "ui/ember-table/table/t-head/th"
+              column=column
+              index=index
+              data=@data
+            )
+            column=column
+            index=index
+            data=@data
+          )
+        }}
+      {{else}}
+        <Ui::EmberTable::Table::THead::Th
+          @column={{column}}
+          @index={{index}}
+          @data={{@data}}
+        />
+      {{/if}}
+    {{/each}}
+  </tr>
+</thead>

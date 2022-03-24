@@ -1,0 +1,8 @@
+@import "./components.css";
+@import "./core.css";
+
+table.dataTable {
+  width: 100%;
+  border: none;
+  border-collapse: collapse;
+}

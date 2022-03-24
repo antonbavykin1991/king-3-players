@@ -1,0 +1,13 @@
+<td ...attributes>
+  {{#if (has-block)}}
+    {{yield (hash
+        column=@column
+        dataItem=@dataItem
+        index=@index
+        data=@data
+      )
+    }}
+  {{else}}
+    {{get @dataItem @column}}
+  {{/if}}
+</td>

@@ -1,0 +1,44 @@
+<tbody class="" ...attributes>
+  {{#each @data key='id' as |dataItem index|}}
+    {{#let (map-has @selectedItems dataItem) as |isSelected|}}
+      <tr class="{{if isSelected "selected"}}">
+        {{#if @selectable}}
+          <Ui::EmberTable::Table::TBody::Td
+            @column="select"
+            @index={{-1}}
+            @dataItem={{dataItem}}
+            @data={{@data}}
+            class="select-checkbox"
+            {{on "click" (fn @onSelect dataItem)}}
+          >
+          </Ui::EmberTable::Table::TBody::Td>
+        {{/if}}
+
+        {{#each @columns as |column|}}
+          {{#if (has-block)}}
+            {{yield (hash
+                Td=(component "ui/ember-table/table/t-body/td"
+                  column=column
+                  dataItem=dataItem
+                  index=index
+                  data=@data
+                )
+                column=column
+                dataItem=dataItem
+                index=index
+                data=@data
+              )
+            }}
+          {{else}}
+            <Ui::EmberTable::Table::TBody::Td
+              @column={{column}}
+              @dataItem={{dataItem}}
+              @index={{index}}
+              @data={{@data}}
+            />
+          {{/if}}
+        {{/each}}
+      </tr>
+    {{/let}}
+  {{/each}}
+</tbody>

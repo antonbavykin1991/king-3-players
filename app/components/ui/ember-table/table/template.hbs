@@ -1,0 +1,21 @@
+<div class="datatable-scroll">
+  <table class="table dataTable" ...attributes>
+    {{yield (hash
+        Head=(component 'ui/ember-table/table/t-head'
+          columns=@columns
+          data=@data
+          selectable=@selectable
+          isAllSelected=@isAllSelected
+          onSelectAll=@handleSelectAll
+        )
+        Body=(component 'ui/ember-table/table/t-body'
+          columns=@columns
+          data=@data
+          selectable=@selectable
+          selectedItems=@selectedItems
+          onSelect=@handleSelect
+        )
+      )
+    }}
+  </table>
+</div>

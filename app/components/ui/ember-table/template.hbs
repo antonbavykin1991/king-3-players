@@ -1,0 +1,16 @@
+<div class="dataTables_wrapper" ...attributes>
+  {{yield (hash
+      Header=(component "ui/ember-table/header")
+      Table=(component "ui/ember-table/table"
+        columns=@columns
+        data=@data
+        selectable=@selectable
+        isAllSelected=this.isAllSelected
+        selectedItems=this.selectedItems
+        handleSelect=this.handleSelect
+        handleSelectAll=this.handleSelectAll
+      )
+      Footer=(component "ui/ember-table/footer")
+    )
+  }}
+</div>

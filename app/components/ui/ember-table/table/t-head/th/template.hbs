@@ -1,0 +1,12 @@
+<th ...attributes>
+  {{#if (has-block)}}
+    {{yield (hash
+        column=@column
+        index=@index
+        data=@data
+      )
+    }}
+  {{else}}
+    {{@column}}
+  {{/if}}
+</th>

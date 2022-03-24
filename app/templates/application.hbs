@@ -1,0 +1,43 @@
+{{page-title "EmberDataTable"}}
+
+<Ui::EmberTable
+  @data={{this.model}}
+  @columns={{this.columns}}
+  @selectable={{true}}
+  @onSelect={{this.handleSelect}}
+  as |eWrapper|
+>
+  <eWrapper.Header />
+  <eWrapper.Table as |et|>
+    <et.Head as |tHead|>
+      <tHead.Th>
+        {{tHead.column}}
+      </tHead.Th>
+    </et.Head>
+
+    <et.Body as |tBody|>
+      {{#let tBody.column tBody.dataItem as |column dataItem|}}
+        {{#if (is-equal column "name")}}
+          <tBody.Td>
+            {{get dataItem "firstName"}} {{get dataItem "lastName"}}
+          </tBody.Td>
+        {{else if (is-equal column "actions")}}
+          <tBody.Td>
+            <button
+              type="button"
+              name="button"
+              {{on "click" (fn this.removeItem dataItem.id)}}
+            >
+              Remove
+            </button>
+          </tBody.Td>
+        {{else}}
+          <tBody.Td />
+        {{/if}}
+      {{/let}}
+    </et.Body>
+  </eWrapper.Table>
+  <eWrapper.Footer />
+</Ui::EmberTable>
+
+{{outlet}}

@@ -1,0 +1,29 @@
+<div class="ui-range-slider" style={{this.sliderStyles}}>
+  <input
+    type="range"
+    name=""
+    min={{this.min}}
+    max={{this.max}}
+    value={{this.first}}
+    multiple
+    {{on "input" (fn this.handleInput "first")}}
+    {{on "change" (fn this.handleChange)}}
+  >
+  <input
+    type="range"
+    name=""
+    min={{this.min}}
+    max={{this.max}}
+    value={{this.last}}
+    multiple
+    {{on "input" (fn this.handleInput "last")}}
+    {{on "change" (fn this.handleChange)}}
+  >
+
+  <span class="ui-range-slider__label" style={{this.firstLabelStyles}}>
+    {{this.exportMin}}
+  </span>
+  <span class="ui-range-slider__label" style={{this.lastLabelStyles}}>
+    {{this.exportMax}}
+  </span>
+</div>

@@ -6,3 +6,84 @@ table.dataTable {
   border: none;
   border-collapse: collapse;
 }
+
+table tr:nth-child(2),
+table tr:nth-child(4),
+table tr:nth-child(6),
+table tr:nth-child(8),
+table tr:nth-child(10),
+table tr:nth-child(12) {
+  background: #e4e4fd;
+}
+
+td {
+  text-align: center;
+}
+
+.ui-range-slider {
+  position: relative;
+}
+
+.ui-range-slider::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  background: #ccc;
+  height: 4px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: -2;
+  border-radius: 2px;
+}
+
+.ui-range-slider::after {
+  content: '';
+  position: absolute;
+  background: red;
+  height: 4px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: -1;
+  border-radius: 2px;
+  width: var(--width);
+  left: var(--left);
+}
+
+input[type="range"][multiple] {
+  display: block;
+  height: 2em;
+  margin: 0;
+  pointer-events: none;
+  width: 100%;
+
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type="range"][multiple] + input[type="range"][multiple] {
+  margin-top: calc(2em * -1);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+}
+input[type="range"]::-moz-range-thumb {
+  pointer-events: all;
+}
+input[type="range"]::-ms-thumb {
+  pointer-events: all;
+}
+
+.ui-range-slider__label {
+  position: absolute;
+  left: var(--left);
+  top 100%;
+  background: black;
+  padding: 2px;
+  color: #ccc;
+  width: 20px;
+  text-align: center;
+  font-size: 12px;
+}
